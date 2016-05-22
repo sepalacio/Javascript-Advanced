@@ -1,9 +1,14 @@
 var express = require('express');
 var app = express();
 
+app.set('view engine', 'pug');
 
+//serve static files usign express framework
+app.use(express.static('public'));
+
+// Routes
 app.get('/', function (req, res){
-	res.send('Hello world');
+	res.render('index');
 })
 
 app.listen(3000, function(err){

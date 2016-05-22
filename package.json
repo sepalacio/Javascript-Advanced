@@ -20,7 +20,8 @@
   "homepage": "https://github.com/sepalacio/Javascript-High-Level#readme",
   "dependencies": {
     "express": "^4.13.4",
-    "materialize-css": "^0.97.6"
+    "materialize-css": "^0.97.6",
+    "pug": "^0.1.0"
   },
   "devDependencies": {
     "gulp": "^3.9.1",
