@@ -32,7 +32,7 @@ gulp.task('scripts', function(){
 })
 
 gulp.task('build', function(){
-return compile();
+	return compile();
 })
 
 gulp.task('watch', function(){

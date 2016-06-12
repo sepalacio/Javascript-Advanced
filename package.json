@@ -19,10 +19,12 @@
   },
   "homepage": "https://github.com/sepalacio/Javascript-High-Level#readme",
   "dependencies": {
+    "empty-element": "^1.0.0",
     "express": "^4.13.4",
     "materialize-css": "^0.97.6",
     "page": "^1.7.1",
-    "pug": "^0.1.0"
+    "pug": "^0.1.0",
+    "yo-yo": "^1.2.1"
   },
   "devDependencies": {
     "babelify": "^7.3.0",
