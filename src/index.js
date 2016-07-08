@@ -1,8 +1,5 @@
 //load page dependecy with browserify
 var page = require('page');
-var main = document.getElementById('main-container');
-var yo_yo =  require('yo-yo');
-var empty = require('empty-element');
 
 require('./homepage');
 require('./signup');
