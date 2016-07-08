@@ -6,7 +6,7 @@ var empty = require('empty-element');
 
 require('./homepage');
 require('./signup');
-
+require('./signin');
 
 page();
 
