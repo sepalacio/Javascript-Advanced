@@ -63,10 +63,35 @@ font-size: 1.2em;
 	border-bottom: 1px solid #edeeee;
 }
 
+.chip {
+    font-size: 18px;
+    background-color: #f5f5f5;
+}
+
 .landing{
 	margin: 30px auto;
 }
 
 .timeline {
 	padding: 30px 0;
+}
+
+.card p a span {
+	margin-left: 5px;
+	margin-top: -12px;
+	color: $secondary-color;
+}
+
+.card .likes{
+	line-height: 30px;
+	margin-left: 12px;
+}
+
+.card i{
+	font-size: 22px;
+}
+
+.card .fa-heart-o{
+	color: $secondary-color;
+	margin-top: -12px;
 }

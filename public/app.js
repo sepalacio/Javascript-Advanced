@@ -2239,25 +2239,47 @@ var template = require('./template');
 var title = require('title');
 
 page('/', function (ctx, next) {
-  title('Platzigram');
-  empty(main).appendChild(template);
+	title('Platzigram');
+	var pictures = [{
+		user: {
+			'username': 'sebas',
+			'avatar': 'http://zblogged.com/wp-content/uploads/2015/11/17.jpg'
+		},
+		url: 'office.jpg',
+		likes: 10,
+		liked: true
+	}, {
+		user: {
+			'username': 'sebas',
+			'avatar': 'http://zblogged.com/wp-content/uploads/2015/11/17.jpg'
+		},
+		url: 'office.jpg',
+		likes: 25,
+		liked: true
+	}];
+	empty(main).appendChild(template(pictures));
 });
 
 },{"./template":16,"empty-element":3,"page":4,"title":7}],16:[function(require,module,exports){
 var yo = require('yo-yo');
 var layout = require('../layout');
+var picture = require('../picture-card');
 
-var template = yo`<div class="container timeline">
+module.exports = function (pictures) {
+	var content = yo`<div class="container timeline">
 		<div class="row">
 			<div class="col s12 m10 offset-m1 l6 offset-l3">
-				content
+				${ pictures.map(function (pic) {
+		return picture(pic);
+	}) }
 			</div>
 		</div>
 	</div>`;
 
-module.exports = layout(template);
+	return layout(content);
+};
 
-},{"../layout":19,"yo-yo":8}],17:[function(require,module,exports){
+},{"../layout":19,"../picture-card":20,"yo-yo":8}],17:[function(require,module,exports){
 //load page dependecy with browserify
 var page = require('page');
 
@@ -2282,7 +2304,7 @@ page();
 
 //console.log(numerosPlus1);
 
-},{"./homepage":15,"./signin":20,"./signup":22,"page":4}],18:[function(require,module,exports){
+},{"./homepage":15,"./signin":21,"./signup":23,"page":4}],18:[function(require,module,exports){
 var yo = require('yo-yo');
 
 module.exports = function landing(box) {
@@ -2333,6 +2355,32 @@ module.exports = function layout(content) {
 };
 
 },{"yo-yo":8}],20:[function(require,module,exports){
+var yo = require('yo-yo');
+
+module.exports = function (pic) {
+  return yo` <div class="card">
+    <div class="card-image">
+      <img class="activator" src="${ pic.url }">
+    </div>
+    <div class="card-content">
+      <a href="/user/${ pic.user.username }" class="card-title">
+		<div class="chip">
+	    <img src="${ pic.user.avatar }" alt="Contact Person">
+	    ${ pic.user.username }
+	  </div>
+      </a>
+      <small class="right time">Hace 1 dia</small>
+      <p>
+		<a class="right" href="#">
+			<i class="fa fa-heart-o" aria-hidden="true"></i>
+			<span class="right">${ pic.likes } me gusta</span>
+		</a>
+      </p>
+    </div>
+  </div>`;
+};
+
+},{"yo-yo":8}],21:[function(require,module,exports){
 var page = require('page');
 var empty = require('empty-element');
 var main = document.getElementById('main-container');
@@ -2344,7 +2392,7 @@ page('/signin', function (ctx, next) {
   empty(main).appendChild(template);
 });
 
-},{"./template":21,"empty-element":3,"page":4,"title":7}],21:[function(require,module,exports){
+},{"./template":22,"empty-element":3,"page":4,"title":7}],22:[function(require,module,exports){
 var yo = require('yo-yo');
 var landing = require('../landing');
 
@@ -2375,7 +2423,7 @@ var signInForm = yo`  <div class="col s12 m7">
 
 module.exports = landing(signInForm);
 
-},{"../landing":18,"yo-yo":8}],22:[function(require,module,exports){
+},{"../landing":18,"yo-yo":8}],23:[function(require,module,exports){
 var page = require('page');
 var empty = require('empty-element');
 var main = document.getElementById('main-container');
@@ -2386,7 +2434,7 @@ page('/signup', function (ctx, next) {
   empty(main).appendChild(template);
 });
 
-},{"./template":23,"empty-element":3,"page":4,"title":7}],23:[function(require,module,exports){
+},{"./template":24,"empty-element":3,"page":4,"title":7}],24:[function(require,module,exports){
 var yo = require('yo-yo');
 var landing = require('../landing');
 

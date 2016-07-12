@@ -6,5 +6,25 @@ var title = require('title');
 
 page('/' , function (ctx, next){
 	title('Platzigram');
-    empty(main).appendChild(template);
+	var pictures = [
+		{
+			user: {
+				'username': 'sebas',
+				'avatar':'http://zblogged.com/wp-content/uploads/2015/11/17.jpg'				
+			},
+			url:'office.jpg',
+			likes: 10,
+			liked: true
+		},
+		{
+			user: {
+				'username': 'sebas',
+				'avatar':'http://zblogged.com/wp-content/uploads/2015/11/17.jpg'				
+			},
+			url:'office.jpg',
+			likes: 25,
+			liked: true
+		}
+	];
+    empty(main).appendChild(template(pictures));
 })
