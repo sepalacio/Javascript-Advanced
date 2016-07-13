@@ -76,8 +76,8 @@ font-size: 1.2em;
 	padding: 30px 0;
 }
 
-.card p a span {
-	margin-left: 5px;
+.liketitle {
+	margin-right: 8px;
 	margin-top: -12px;
 	color: $secondary-color;
 }
@@ -94,4 +94,24 @@ font-size: 1.2em;
 .card .fa-heart-o{
 	color: $secondary-color;
 	margin-top: -12px;
+}
+.card .fa-heart{
+	color: #f44336;
+	margin-top: -12px;
+	display: none;
+}
+
+.card.liked {
+  .fa-heart {
+    display: block;
+  }
+
+  .fa-heart-o {
+    display: none;
+  }
+}
+
+.btn-large {
+    height: 64px;
+    line-height: 54px;
 }
