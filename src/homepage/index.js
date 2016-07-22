@@ -5,6 +5,8 @@ var template = require('./template');
 var title = require('title');
 var request = require('superagent');
 var header =require('../header');
+var axios = require('axios');
+
 
 page('/' ,header,loadPictures, function (ctx, next){
 	title('Platzigram');
@@ -13,12 +15,26 @@ page('/' ,header,loadPictures, function (ctx, next){
     empty(main).appendChild(template(ctx.pictures));
 })
 
+//HTTP REQUEST USING CALLBACKS
+// function loadPictures(ctx, next){
+// 	request
+// 		.get('/api/pictures')
+// 		.end( function(err, res){
+// 			if(err) return console.log(err);
+// 			ctx.pictures = res.body;
+// 			next();
+// 		})
+// }
+
+//HTTP REQUEST USING PROMISES
 function loadPictures(ctx, next){
-	request
+	axios
 		.get('/api/pictures')
-		.end( function(err, res){
-			if(err) return console.log(err);
-			ctx.pictures = res.body;
+		.then( function(res){
+			ctx.pictures = res.data;
 			next();
+		})
+		.catch(function(err){
+			console.log(err);
 		})
 }
