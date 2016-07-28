@@ -8,7 +8,7 @@ var header =require('../header');
 var axios = require('axios');
 
 
-page('/' ,header,loadPictures, function (ctx, next){
+page('/' ,header,loadPicturesFetch, function (ctx, next){
 	title('Platzigram');
 
 
@@ -27,11 +27,26 @@ page('/' ,header,loadPictures, function (ctx, next){
 // }
 
 //HTTP REQUEST USING PROMISES
-function loadPictures(ctx, next){
-	axios
-		.get('/api/pictures')
+// function loadPictures(ctx, next){
+// 	axios
+// 		.get('/api/pictures')
+// 		.then( function(res){
+// 			ctx.pictures = res.data;
+// 			next();
+// 		})
+// 		.catch(function(err){
+// 			console.log(err);
+// 		})
+// }
+
+//REQUEST USING NATIVE API
+function loadPicturesFetch(ctx, next){
+	fetch('/api/pictures')
 		.then( function(res){
-			ctx.pictures = res.data;
+			return res.json();
+		})
+		.then(function(pictures){
+			ctx.pictures = pictures;
 			next();
 		})
 		.catch(function(err){
