@@ -15707,13 +15707,43 @@ function loadPicturesFetch(ctx, next) {
 	});
 }
 
+//REQUEST USING NATIVE API
+// async function asyncLoad(ctx, next){
+// 	try {
+// 		//await :detiene la ejecuion del proceso hasta q se cumplan las promesas
+// 		ctx.pictures = await fetch('/api/pictures').then(res => res.json())
+// 		next();
+// 	} catch(err){
+// 		return console.log(err);
+// 	}
+// }
+
 },{"../header":74,"./template":76,"axios":1,"empty-element":25,"page":57,"superagent":60,"title":65}],76:[function(require,module,exports){
 var yo = require('yo-yo');
 var layout = require('../layout');
 var picture = require('../picture-card');
+var translate = require('../translate').message;
 
 module.exports = function (pictures) {
 	var content = yo`<div class="container timeline">
+	<div class="row">
+	<div class="col s12 m10 offset-m1 l8 offset-l2 center-align">
+		<form enctype="multipart/form-data" id="formUpload" class="form-upload">
+			<div id="fileName" class="fileUpload btn btn-flat cyan">
+				<span>
+					<i class="fa fa-camera"></i>
+				${ translate('upload-picture') }</span>
+				<input type="file" name="picture" id="file" class="upload" onchange=${ onchange } />
+				<button type="submit" id="btnUpload" class="btn btn-flat cyan hide">
+					${ translate('upload') }
+				</button>
+				<button type="button" id="btnCancel" onclick=${ cancel } class="btn btn-flat red hide">
+					<i class="fa fa-cancel"></i>
+				</button>
+			</div>
+		</form>
+	</div>
+	</div>
 		<div class="row">
 			<div class="col s12 m10 offset-m1 l6 offset-l3">
 				${ pictures.map(function (pic) {
@@ -15722,11 +15752,25 @@ module.exports = function (pictures) {
 			</div>
 		</div>
 	</div>`;
+	function onchange() {
+		toggleButtons();
+	}
+
+	function cancel() {
+		toggleButtons();
+		document.getElementById('formUpload').reset();
+	}
+
+	function toggleButtons() {
+		document.getElementById('fileName').classList.toggle('hide');
+		document.getElementById('btnUpload').classList.toggle('hide');
+		document.getElementById('btnCancel').classList.toggle('hide');
+	}
 
 	return layout(content);
 };
 
-},{"../layout":79,"../picture-card":80,"yo-yo":66}],77:[function(require,module,exports){
+},{"../layout":79,"../picture-card":80,"../translate":87,"yo-yo":66}],77:[function(require,module,exports){
 //load page dependecy with browserify
 var page = require('page');
 
@@ -15935,7 +15979,9 @@ module.exports = {
 	'signup.have-account': '¿Already have an account?',
 	'signin': 'Signin',
 	'signin.no-have-account': '¿Don\'t have an account?',
-	'language': 'Language'
+	'language': 'Language',
+	'upload-picture': 'Upload image',
+	'upload': 'Upload'
 };
 
 },{}],86:[function(require,module,exports){
@@ -15955,7 +16001,9 @@ module.exports = {
 	'signup.have-account': '¿Tienes una cuenta?',
 	'signin': 'Entrar',
 	'signin.no-have-account': 'No tienes una cuenta',
-	'language': 'Idioma'
+	'language': 'Idioma',
+	'upload-picture': 'Subir foto',
+	'upload': 'subir'
 };
 
 },{}],87:[function(require,module,exports){

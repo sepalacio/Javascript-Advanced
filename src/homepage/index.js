@@ -53,3 +53,14 @@ function loadPicturesFetch(ctx, next){
 			console.log(err);
 		})
 }
+
+//REQUEST USING NATIVE API
+// async function asyncLoad(ctx, next){
+// 	try {
+// 		//await :detiene la ejecuion del proceso hasta q se cumplan las promesas
+// 		ctx.pictures = await fetch('/api/pictures').then(res => res.json())
+// 		next();
+// 	} catch(err){
+// 		return console.log(err);
+// 	}
+// }
