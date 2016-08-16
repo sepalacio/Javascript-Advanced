@@ -8,12 +8,32 @@ var header =require('../header');
 var axios = require('axios');
 
 
-page('/' ,header,loadPicturesFetch, function (ctx, next){
+page('/' ,header, loading ,loadPicturesFetch, function (ctx, next){
 	title('Platzigram');
-
-
     empty(main).appendChild(template(ctx.pictures));
 })
+
+function loading(ctx, next){
+	var el = document.createElement('div');
+	el.classList.add('loader');
+	main.appendChild(el);
+	next();
+}
+
+//REQUEST USING NATIVE API
+function loadPicturesFetch(ctx, next){
+	fetch('/api/pictures')
+		.then( function(res){
+			return res.json();
+		})
+		.then(function(pictures){
+			ctx.pictures = pictures;
+			next();
+		})
+		.catch(function(err){
+			console.log(err);
+		})
+}
 
 //HTTP REQUEST USING CALLBACKS
 // function loadPictures(ctx, next){
@@ -39,20 +59,6 @@ page('/' ,header,loadPicturesFetch, function (ctx, next){
 // 		})
 // }
 
-//REQUEST USING NATIVE API
-function loadPicturesFetch(ctx, next){
-	fetch('/api/pictures')
-		.then( function(res){
-			return res.json();
-		})
-		.then(function(pictures){
-			ctx.pictures = pictures;
-			next();
-		})
-		.catch(function(err){
-			console.log(err);
-		})
-}
 
 //REQUEST USING NATIVE API
 // async function asyncLoad(ctx, next){

@@ -15665,11 +15665,29 @@ var request = require('superagent');
 var header = require('../header');
 var axios = require('axios');
 
-page('/', header, loadPicturesFetch, function (ctx, next) {
+page('/', header, loading, loadPicturesFetch, function (ctx, next) {
 	title('Platzigram');
-
 	empty(main).appendChild(template(ctx.pictures));
 });
+
+function loading(ctx, next) {
+	var el = document.createElement('div');
+	el.classList.add('loader');
+	main.appendChild(el);
+	next();
+}
+
+//REQUEST USING NATIVE API
+function loadPicturesFetch(ctx, next) {
+	fetch('/api/pictures').then(function (res) {
+		return res.json();
+	}).then(function (pictures) {
+		ctx.pictures = pictures;
+		next();
+	}).catch(function (err) {
+		console.log(err);
+	});
+}
 
 //HTTP REQUEST USING CALLBACKS
 // function loadPictures(ctx, next){
@@ -15694,18 +15712,6 @@ page('/', header, loadPicturesFetch, function (ctx, next) {
 // 			console.log(err);
 // 		})
 // }
-
-//REQUEST USING NATIVE API
-function loadPicturesFetch(ctx, next) {
-	fetch('/api/pictures').then(function (res) {
-		return res.json();
-	}).then(function (pictures) {
-		ctx.pictures = pictures;
-		next();
-	}).catch(function (err) {
-		console.log(err);
-	});
-}
 
 //REQUEST USING NATIVE API
 // async function asyncLoad(ctx, next){
@@ -15986,7 +15992,8 @@ module.exports = {
 	'signin.no-have-account': '¿Don\'t have an account?',
 	'language': 'Language',
 	'upload-picture': 'Upload image',
-	'upload': 'Upload'
+	'upload': 'Upload',
+	'loading': 'Loading'
 };
 
 },{}],86:[function(require,module,exports){
@@ -16008,7 +16015,8 @@ module.exports = {
 	'signin.no-have-account': 'No tienes una cuenta',
 	'language': 'Idioma',
 	'upload-picture': 'Subir foto',
-	'upload': 'subir'
+	'upload': 'subir',
+	'loading': 'Cargando'
 };
 
 },{}],87:[function(require,module,exports){

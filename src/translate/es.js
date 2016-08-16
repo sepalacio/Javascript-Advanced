@@ -16,5 +16,6 @@ module.exports = {
 	'signin.no-have-account': 'No tienes una cuenta',
 	'language': 'Idioma',
 	'upload-picture':'Subir foto',
-	'upload':'subir'
+	'upload':'subir',
+	'loading': 'Cargando'
 }
