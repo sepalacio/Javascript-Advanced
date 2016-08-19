@@ -10,7 +10,7 @@ function render (picture){
           <img class="activator" src="${picture.url}">
         </div>
         <div class="card-content">
-          <a href="/user/${picture.user.username}" class="card-title">
+          <a href="/${picture.user.username}" class="card-title">
         <div class="chip">
           <img src="${picture.user.avatar}" alt="Contact Person">
           ${picture.user.username}

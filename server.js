@@ -41,8 +41,8 @@ app.get('/api/pictures', function(req, res, next){
 	var pictures = [
 		{
 			user: {
-				'username': 'sebas',
-				'avatar':'http://zblogged.com/wp-content/uploads/2015/11/17.jpg'				
+				'username': 'sebastian',
+				'avatar':'https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAZtAAAAJGFkODQyZTk1LTk1OGQtNGU5Ni1hN2JmLTI1NDRlNzBiNzNkNw.jpg.jpg'				
 			},
 			url:'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQwD_ZOkV3ALOJBAsKTlz82nyU2tBh7r-1YgsL1K2PdobJpeUgbuQ',
 			likes: 0,
@@ -51,8 +51,8 @@ app.get('/api/pictures', function(req, res, next){
 		},
 		{
 			user: {
-				'username': 'sebas',
-				'avatar':'http://zblogged.com/wp-content/uploads/2015/11/17.jpg'				
+				'username': 'sebastian',
+				'avatar':'https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAZtAAAAJGFkODQyZTk1LTk1OGQtNGU5Ni1hN2JmLTI1NDRlNzBiNzNkNw.jpg'				
 			},
 			url:'office.jpg',
 			likes: 1,
@@ -72,6 +72,52 @@ app.post('/api/pictures', function(req, res){
 		}
 		res.send("The file was uploaded succesfully");
 	})
+})
+
+app.get('/api/user/:username/', function(req, res){
+
+	const user = {
+		'username': 'sebastian',
+		'avatar': 'https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAZtAAAAJGFkODQyZTk1LTk1OGQtNGU5Ni1hN2JmLTI1NDRlNzBiNzNkNw.jpg',
+		'pictures': [
+			{
+				id: 0,
+				src: 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRX6fX1674WEJZHxZdns_OrBdlqVW491zHP6vn06CUaIdkBANvF',
+				likes: 5
+			},
+			{
+				id: 1,
+				src: 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRX6fX1674WEJZHxZdns_OrBdlqVW491zHP6vn06CUaIdkBANvF',
+				likes: 1
+			},
+			{
+				id: 2,
+				src: 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRX6fX1674WEJZHxZdns_OrBdlqVW491zHP6vn06CUaIdkBANvF',
+				likes: 2
+			},
+			{
+				id: 3,
+				src: 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRX6fX1674WEJZHxZdns_OrBdlqVW491zHP6vn06CUaIdkBANvF',
+				likes: 15
+			},
+			{
+				id: 4,
+				src: 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRX6fX1674WEJZHxZdns_OrBdlqVW491zHP6vn06CUaIdkBANvF',
+				likes: 45
+			},
+			{
+				id: 5,
+				src: 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRX6fX1674WEJZHxZdns_OrBdlqVW491zHP6vn06CUaIdkBANvF',
+				likes: 32
+			}
+		]
+	}
+
+	res.send(user);
+})
+
+app.get('/:username', function(req, res){
+	res.render('index', { title: `Platzigram - ${req.params.username}` } )
 })
 
 app.listen(3000, function(err){
