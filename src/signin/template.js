@@ -1,9 +1,9 @@
-var yo =  require('yo-yo');
-var landing = require('../landing');   
+var yo = require('yo-yo');
+var landing = require('../landing');
 var translate = require('../translate');
 
-var signInForm = yo`  <div class="col s12 m7">
-    <div class="row">
+var signinForm = yo`<div class="col s12 m7">
+  <div class="row">
     <div class="signup-box">
       <h1 class="platzigram">Platzigram</h1>
       <form class="signup-form">
@@ -13,18 +13,18 @@ var signInForm = yo`  <div class="col s12 m7">
         </div>
         <div class="divider"></div>
         <div class="section">
-          <input type="text" name="username" placeholder="${translate.message('signup.username')}" />
-          <input type="password" name="password" placeholder="${translate.message('signup.password')}" />
-          <button class="btn waves-effect waves-light btn-signup" type="submit">${translate.message('signin')}</button>
+          <input type="text" name="username" placeholder="${translate.message('username')}" />
+          <input type="password" name="password" placeholder="${translate.message('password')}" />
+          <button class="btn waves-effect waves-light btn-signup" type="submit">${translate.message('signup.text')}</button>
         </div>
       </form>
     </div>
   </div>
   <div class="row">
     <div class="login-box">
-      ${translate.message('signin.no-have-account')} <a href="/signup">${translate.message('signup.call-to-action')}</a>
+      ${translate.message('signin.not-have-account')} <a href="/signup">${translate.message('signup.call-to-action')}</a>
     </div>
   </div>
 </div>`;
 
-module.exports = landing(signInForm);
+module.exports = landing(signinForm);

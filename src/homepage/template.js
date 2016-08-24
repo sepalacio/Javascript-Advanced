@@ -42,17 +42,17 @@ module.exports = function (pictures) {
     toggleButtons();
   }
 
-	function onsubmit(ev){
-		ev.preventDefault();
-		var data = new FormData(this);
+  function onsubmit(ev) {
+    ev.preventDefault();
 
-		request
-			.post('/api/pictures')
-			.send(data)
-			.end( function (err, res){
-				console.log(arguments);
-			})
-	}
+    var data = new FormData(this);
+    request
+      .post('/api/pictures')
+      .send(data)
+      .end(function (err, res) {
+        console.log(arguments);
+      })
+  }
 
   return layout(el);
 }

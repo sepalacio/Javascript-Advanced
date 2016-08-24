@@ -1,204 +1,261 @@
-
 $secondary-color: #125688;
+$platzigram-red: #f44336;
 
 @import "node_modules/materialize-css/sass/materialize.scss";
+@import "./loader";
 
-body {
-	background: #fafafa;
-	color: #125688;
-	font-family: 'Montserrat', sans-serif;
+@mixin prefix($property, $value, $vendors: webkit moz ms o) {
+  @if $vendors {
+    @each $vendor in $vendors {
+      #{"-" + $vendor + "-" + $property}: #{$value};
+    }
+  }
+  #{$property}: #{$value};
 }
 
-#main-container {
+body {
+  background: #fafafa;
+  color: $secondary-color;
+  font-family: Montserrat;
+}
+
+.btn.btn-flat {
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.landing {
+  margin: 30px auto;
 }
 
 .iphone {
-	max-width: 100%;
+  max-width: 100%;
 }
 
 .site-footer {
-	text-transform: uppercase;
-	font-size: 12px;
+  text-transform: uppercase;
+  font-size: 12px;
 }
 
-.login-box, .signup-box {
-	background: white;
-	border: 1px solid #edeeee;
-	border-radius: 3px;
-	padding: 10px 0;
-	text-align: center;
+.loader-container {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-box,
+.signup-box {
+  background-color: white;
+  border: 1px solid #edeeee;
+  border-radius: 3px;
+  padding: 10px 0;
+  text-align: center;
 }
 
 .platzigram {
-	font-family: 'Oleo Script', cursive;
-	color: $secondary-color !important;
+  font-family: 'Oleo Script';
+  font-size: 42px;
+  color: $secondary-color !important;
 }
 
-.signup-form{
-width: 65%;
-margin: 0 auto;
+.signup-form {
+  width: 65%;
+  margin: 0 auto;
 }
 
-.signup-form h2{
-	color: #a5a7aa;
-font-size: 1.2em;
+.signup-form h2 {
+  color: #a5a7aa;
+  font-size: 1.2em;
 }
 
-.signup-form .btn.btn-fb{
-	background: #4090db;
-	font-size: .8em;
+.signup-form .btn.btn-fb {
+  background-color: #4090db;
+  font-size: .8em;
 }
 
-.signup-form .btn.btn-fb:hover{
-	background-color: #2d6599;
+.signup-form .btn.btn-fb:hover {
+  background-color: #2d6599;
 }
 
-.signup-form .btn.btn-signup{
-	background-color: #125688;
-}
-.header{
-	background-color: white;
-	color :$secondary-color;
-	box-shadow: none;
-	border-bottom: 1px solid #edeeee;
+.signup-form .btn.btn-signup {
+  background-color: $secondary-color;
 }
 
-.chip {
-    font-size: 18px;
-    background-color: #f5f5f5;
-}
-
-.landing{
-	margin: 30px auto;
+.header {
+  background-color: white;
+  color: $secondary-color;
+  box-shadow: none;
+  border-bottom: 1px solid #edeeee;
 }
 
 .timeline {
-	padding: 30px 0;
+  padding: 30px 0;
 }
 
-.liketitle {
-	margin-right: 8px;
-	margin-top: -12px;
-	color: $secondary-color;
+$avatar-size: 48px;
+$avatar-size-big: 150px;
+
+.avatar {
+  width: $avatar-size;
+  height: $avatar-size;
+  border-radius: 50%;
+  float: left;
+  margin-right: 12px;
 }
 
-.card .likes{
-	line-height: 30px;
-	margin-left: 12px;
+.card .username {
+  color: $secondary-color;
 }
 
-.card i{
-	font-size: 22px;
+.card small.time {
+  line-height: $avatar-size;
 }
 
-.card .fa-heart-o{
-	color: $secondary-color;
-	margin-top: -12px;
+.card p {
+  padding: 20px 0;
 }
-.card .fa-heart{
-	color: #f44336;
-	margin-top: -12px;
-	display: none;
+
+.card .likes {
+  line-height: 30px;
+  margin-left: 12px;
+}
+
+.card .heart,
+.card .heart-o, {
+  font-size: 30px;
+}
+
+.fa-heart-o {
+  color: $secondary-color;
+}
+
+.fa-heart {
+  color: $platzigram-red;
+}
+
+.heart {
+  display: none;
 }
 
 .card.liked {
-  .fa-heart {
+  .heart {
     display: block;
   }
 
-  .fa-heart-o {
+  .heart-o {
     display: none;
   }
 }
 
-.btn-large {
-    height: 64px;
-    line-height: 54px;
+.form-upload {
+
+  span, button {
+    color: white;
+  }
+
+  .fileUpload {
+    position: relative;
+    overflow: hidden;
+    margin: 10px;
+
+
+    input {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      margin: 0;
+      padding: 0;
+      font-size: 20px;
+      cursor: pointer;
+      opacity: 0;
+      filter: alpha(opacity=0);
+    }
+
+  }
 }
 
-.form-upload{
-	span, button{
-		color: white;
-	}
+.user-page {
+  margin-top: 30px;
 
-	.fileUpload{
-		position: relative;
-		overflow: hidden;
-		margin:10px;
-		input {
-			position: absolute;
-			top: 0;
-			bottom:0;
-			right:0;
-			margin:0;
-			padding:0;
-			font-size:20px;
-			cursor: pointer;
-			opacity: 0;
-			filter: alpha(opacity=0);
-		}
-	}
+  .heading {
+    margin-bottom: 20px;
+  }
+
+  .picture-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 400px;
+    margin-bottom: 20px;
+    position: relative;
+
+    &:hover {
+      .picture {
+        @include prefix(filter, blur(5px) grayscale(100%));
+      }
+
+      .likes {
+        display: flex;
+      }
+    }
+
+    .picture {
+      margin-bottom: 20px;
+      display: block;
+      max-width: 100%;
+      max-height: 100%;
+    }
+
+    .likes {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      text-align: center;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      color: $platzigram-red;
+      font-size: 34px;
+      display: none
+    }
+
+    .fa-heart {
+      margin-right: 8px;
+      display: inline-block;
+    }
+  }
 }
-.loader {
-  font-size: 10px;
-  margin: 50px auto;
-  text-indent: -9999em;
-  width: 11em;
-  height: 11em;
-  border-radius: 50%;
-  background: $secondary-color;
-  background: -moz-linear-gradient(left, $secondary-color 10%, rgba(59,103,183, 0) 42%);
-  background: -webkit-linear-gradient(left, $secondary-color 10%, rgba(59,103,183, 0) 42%);
-  background: -o-linear-gradient(left, $secondary-color 10%, rgba(59,103,183, 0) 42%);
-  background: -ms-linear-gradient(left, $secondary-color 10%, rgba(59,103,183, 0) 42%);
-  background: linear-gradient(to right, $secondary-color 10%, rgba(59,103,183, 0) 42%);
-  position: relative;
-  -webkit-animation: load3 1.4s infinite linear;
-  animation: load3 1.4s infinite linear;
-  -webkit-transform: translateZ(0);
-  -ms-transform: translateZ(0);
-  transform: translateZ(0);
+
+.modal {
+  img {
+    max-height: 100%;
+    max-width: 90%;
+  }
+
+  .fa-heart {
+    display: inline-block;
+  }
 }
-.loader:before {
-  width: 50%;
-  height: 50%;
-  background: $secondary-color;
-  border-radius: 100% 0 0 0;
+
+.like-heart {
+  font-size: 10em;
   position: absolute;
-  top: 0;
-  left: 0;
-  content: '';
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  transition: all .1s ease;
+  opacity: 0;
 }
-.loader:after {
-  background: #fefffc;
-  width: 75%;
-  height: 75%;
-  border-radius: 50%;
-  content: '';
-  margin: auto;
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-}
-@-webkit-keyframes load3 {
-  0% {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-  100% {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
-}
-@keyframes load3 {
-  0% {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-  100% {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
+
+.like-heart.liked {
+  color: $platzigram-red;
+  font-size: 12em;
+  display: block;
+  transition: all .5s ease;
+  opacity: 1;
 }

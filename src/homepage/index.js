@@ -1,72 +1,71 @@
 var page = require('page');
 var empty = require('empty-element');
-var main = document.getElementById('main-container');
 var template = require('./template');
 var title = require('title');
 var request = require('superagent');
-var header =require('../header');
+var header = require('../header');
 var axios = require('axios');
 
+page('/', header, loading, asyncLoad, function (ctx, next) {
+  title('Platzigram');
+  var main = document.getElementById('main-container');
 
-page('/' ,header, loading ,loadPicturesFetch, function (ctx, next){
-	title('Platzigram');
-    empty(main).appendChild(template(ctx.pictures));
+  empty(main).appendChild(template(ctx.pictures));
 })
 
-function loading(ctx, next){
-	var el = document.createElement('div');
-	el.classList.add('loader');
-	main.appendChild(el);
-	next();
+function loading(ctx, next) {
+  var container = document.createElement('div');
+  var loadingEl = document.createElement('div');
+  container.classList.add('loader-container');
+  loadingEl.classList.add('loader');
+  container.appendChild(loadingEl);
+  var main = document.getElementById('main-container');
+  empty(main).appendChild(container);
+  next();
 }
 
-//REQUEST USING NATIVE API
-function loadPicturesFetch(ctx, next){
-	fetch('/api/pictures')
-		.then( function(res){
-			return res.json();
-		})
-		.then(function(pictures){
-			ctx.pictures = pictures;
-			next();
-		})
-		.catch(function(err){
-			console.log(err);
-		})
+function loadPictures(ctx, next) {
+  request
+    .get('/api/pictures')
+    .end(function (err, res) {
+      if (err) return console.log(err);
+
+      ctx.pictures = res.body;
+      next();
+    })
 }
 
-//HTTP REQUEST USING CALLBACKS
-// function loadPictures(ctx, next){
-// 	request
-// 		.get('/api/pictures')
-// 		.end( function(err, res){
-// 			if(err) return console.log(err);
-// 			ctx.pictures = res.body;
-// 			next();
-// 		})
-// }
+function loadPicturesAxios(ctx, next) {
+  axios
+    .get('/api/pictures')
+    .then(function (res) {
+      ctx.pictures = res.data;
+      next();
+    })
+    .catch(function (err) {
+      console.log(err);
+    })
+}
 
-//HTTP REQUEST USING PROMISES
-// function loadPictures(ctx, next){
-// 	axios
-// 		.get('/api/pictures')
-// 		.then( function(res){
-// 			ctx.pictures = res.data;
-// 			next();
-// 		})
-// 		.catch(function(err){
-// 			console.log(err);
-// 		})
-// }
+function loadPicturesFetch(ctx, next) {
+  fetch('/api/pictures')
+    .then(function (res) {
+      return res.json();
+    })
+    .then(function (pictures) {
+      ctx.pictures = pictures;
+      next();
+    })
+    .catch(function (err) {
+      console.log(err);
+    })
+}
 
-
-//REQUEST USING NATIVE API
-// async function asyncLoad(ctx, next){
-// 	try {
-// 		//await :detiene la ejecuion del proceso hasta q se cumplan las promesas
-// 		ctx.pictures = await fetch('/api/pictures').then(res => res.json())
-// 		next();
-// 	} catch(err){
-// 		return console.log(err);
-// 	}
-// }
+async function asyncLoad(ctx, next) {
+  try {
+    ctx.pictures = await fetch('/api/pictures').then(res => res.json());
+    next();
+  } catch (err) {
+    return console.log(err);
+  }
+}

@@ -6390,113 +6390,6 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
   .picker--time .picker__box {
     margin-bottom: 5em; } }
 
-body {
-  background: #fafafa;
-  color: #125688;
-  font-family: 'Montserrat', sans-serif; }
-
-.iphone {
-  max-width: 100%; }
-
-.site-footer {
-  text-transform: uppercase;
-  font-size: 12px; }
-
-.login-box, .signup-box {
-  background: white;
-  border: 1px solid #edeeee;
-  border-radius: 3px;
-  padding: 10px 0;
-  text-align: center; }
-
-.platzigram {
-  font-family: 'Oleo Script', cursive;
-  color: #125688 !important; }
-
-.signup-form {
-  width: 65%;
-  margin: 0 auto; }
-
-.signup-form h2 {
-  color: #a5a7aa;
-  font-size: 1.2em; }
-
-.signup-form .btn.btn-fb, .signup-form .btn-fb.btn-large {
-  background: #4090db;
-  font-size: .8em; }
-
-.signup-form .btn.btn-fb:hover, .signup-form .btn-fb.btn-large:hover {
-  background-color: #2d6599; }
-
-.signup-form .btn.btn-signup, .signup-form .btn-signup.btn-large {
-  background-color: #125688; }
-
-.header {
-  background-color: white;
-  color: #125688;
-  box-shadow: none;
-  border-bottom: 1px solid #edeeee; }
-
-.chip {
-  font-size: 18px;
-  background-color: #f5f5f5; }
-
-.landing {
-  margin: 30px auto; }
-
-.timeline {
-  padding: 30px 0; }
-
-.liketitle {
-  margin-right: 8px;
-  margin-top: -12px;
-  color: #125688; }
-
-.card .likes {
-  line-height: 30px;
-  margin-left: 12px; }
-
-.card i {
-  font-size: 22px; }
-
-.card .fa-heart-o {
-  color: #125688;
-  margin-top: -12px; }
-
-.card .fa-heart {
-  color: #f44336;
-  margin-top: -12px;
-  display: none; }
-
-.card.liked .fa-heart {
-  display: block; }
-
-.card.liked .fa-heart-o {
-  display: none; }
-
-.btn-large {
-  height: 64px;
-  line-height: 54px; }
-
-.form-upload span, .form-upload button {
-  color: white; }
-
-.form-upload .fileUpload {
-  position: relative;
-  overflow: hidden;
-  margin: 10px; }
-  .form-upload .fileUpload input {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    margin: 0;
-    padding: 0;
-    font-size: 20px;
-    cursor: pointer;
-    opacity: 0;
-    filter: alpha(opacity=0); }
-
 .loader {
   font-size: 10px;
   margin: 50px auto;
@@ -6504,12 +6397,12 @@ body {
   width: 11em;
   height: 11em;
   border-radius: 50%;
-  background: #125688;
-  background: -moz-linear-gradient(left, #125688 10%, rgba(59, 103, 183, 0) 42%);
-  background: -webkit-linear-gradient(left, #125688 10%, rgba(59, 103, 183, 0) 42%);
-  background: -o-linear-gradient(left, #125688 10%, rgba(59, 103, 183, 0) 42%);
-  background: -ms-linear-gradient(left, #125688 10%, rgba(59, 103, 183, 0) 42%);
-  background: linear-gradient(to right, #125688 10%, rgba(59, 103, 183, 0) 42%);
+  background: #126193;
+  background: -moz-linear-gradient(left, #126193 10%, rgba(18, 97, 147, 0) 42%);
+  background: -webkit-linear-gradient(left, #126193 10%, rgba(18, 97, 147, 0) 42%);
+  background: -o-linear-gradient(left, #126193 10%, rgba(18, 97, 147, 0) 42%);
+  background: -ms-linear-gradient(left, #126193 10%, rgba(18, 97, 147, 0) 42%);
+  background: linear-gradient(to right, #126193 10%, rgba(18, 97, 147, 0) 42%);
   position: relative;
   -webkit-animation: load3 1.4s infinite linear;
   animation: load3 1.4s infinite linear;
@@ -6520,7 +6413,7 @@ body {
 .loader:before {
   width: 50%;
   height: 50%;
-  background: #125688;
+  background: #126193;
   border-radius: 100% 0 0 0;
   position: absolute;
   top: 0;
@@ -6528,7 +6421,7 @@ body {
   content: ''; }
 
 .loader:after {
-  background: #fefffc;
+  background: #fafbfa;
   width: 75%;
   height: 75%;
   border-radius: 50%;
@@ -6555,3 +6448,191 @@ body {
   100% {
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg); } }
+
+body {
+  background: #fafafa;
+  color: #125688;
+  font-family: Montserrat; }
+
+.btn.btn-flat, .btn-flat.btn-large {
+  background-color: transparent;
+  box-shadow: none; }
+
+.landing {
+  margin: 30px auto; }
+
+.iphone {
+  max-width: 100%; }
+
+.site-footer {
+  text-transform: uppercase;
+  font-size: 12px; }
+
+.loader-container {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+
+.login-box,
+.signup-box {
+  background-color: white;
+  border: 1px solid #edeeee;
+  border-radius: 3px;
+  padding: 10px 0;
+  text-align: center; }
+
+.platzigram {
+  font-family: 'Oleo Script';
+  font-size: 42px;
+  color: #125688 !important; }
+
+.signup-form {
+  width: 65%;
+  margin: 0 auto; }
+
+.signup-form h2 {
+  color: #a5a7aa;
+  font-size: 1.2em; }
+
+.signup-form .btn.btn-fb, .signup-form .btn-fb.btn-large {
+  background-color: #4090db;
+  font-size: .8em; }
+
+.signup-form .btn.btn-fb:hover, .signup-form .btn-fb.btn-large:hover {
+  background-color: #2d6599; }
+
+.signup-form .btn.btn-signup, .signup-form .btn-signup.btn-large {
+  background-color: #125688; }
+
+.header {
+  background-color: white;
+  color: #125688;
+  box-shadow: none;
+  border-bottom: 1px solid #edeeee; }
+
+.timeline {
+  padding: 30px 0; }
+
+.avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  float: left;
+  margin-right: 12px; }
+
+.card .username {
+  color: #125688; }
+
+.card small.time {
+  line-height: 48px; }
+
+.card p {
+  padding: 20px 0; }
+
+.card .likes {
+  line-height: 30px;
+  margin-left: 12px; }
+
+.card .heart,
+.card .heart-o {
+  font-size: 30px; }
+
+.fa-heart-o {
+  color: #125688; }
+
+.fa-heart {
+  color: #f44336; }
+
+.heart {
+  display: none; }
+
+.card.liked .heart {
+  display: block; }
+
+.card.liked .heart-o {
+  display: none; }
+
+.form-upload span, .form-upload button {
+  color: white; }
+
+.form-upload .fileUpload {
+  position: relative;
+  overflow: hidden;
+  margin: 10px; }
+  .form-upload .fileUpload input {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0); }
+
+.user-page {
+  margin-top: 30px; }
+  .user-page .heading {
+    margin-bottom: 20px; }
+  .user-page .picture-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 400px;
+    margin-bottom: 20px;
+    position: relative; }
+    .user-page .picture-container:hover .picture {
+      -webkit-filter: blur(5px) grayscale(100%);
+      -moz-filter: blur(5px) grayscale(100%);
+      -ms-filter: blur(5px) grayscale(100%);
+      -o-filter: blur(5px) grayscale(100%);
+      filter: blur(5px) grayscale(100%); }
+    .user-page .picture-container:hover .likes {
+      display: flex; }
+    .user-page .picture-container .picture {
+      margin-bottom: 20px;
+      display: block;
+      max-width: 100%;
+      max-height: 100%; }
+    .user-page .picture-container .likes {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      text-align: center;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      color: #f44336;
+      font-size: 34px;
+      display: none; }
+    .user-page .picture-container .fa-heart {
+      margin-right: 8px;
+      display: inline-block; }
+
+.modal img {
+  max-height: 100%;
+  max-width: 90%; }
+
+.modal .fa-heart {
+  display: inline-block; }
+
+.like-heart {
+  font-size: 10em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  transition: all .1s ease;
+  opacity: 0; }
+
+.like-heart.liked {
+  color: #f44336;
+  font-size: 12em;
+  display: block;
+  transition: all .5s ease;
+  opacity: 1; }
