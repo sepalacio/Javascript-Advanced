@@ -8,3 +8,4 @@ require('./user-page');
 require('./footer');
 
 page();
+

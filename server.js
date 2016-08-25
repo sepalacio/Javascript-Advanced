@@ -1,16 +1,28 @@
 var express = require('express');
-var multer  = require('multer');
+var app = express();
+var multer = require('multer');
 var ext = require('file-extension');
+var config = require('./config');
+var aws = require('aws-sdk');
+var multerS3 = require('multer-s3');
 
-var storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, './uploads')
+var s3 = new aws.S3({
+  accessKeyId: config.aws.accessKey,
+  secretAccessKey: config.aws.secretKey
+});
+
+var storage = multerS3({
+  s3: s3,
+  bucket: 'platzigram-s',
+  acl: 'public-read',
+  metadata: function(req, file, cb){    
+    cb(null, {fieldName: file.fieldname})
   },
-  filename: function (req, file, cb) {
+  key: function(req, file, cb){
     cb(null, +Date.now() + '.' + ext(file.originalname))
   }
 })
- 
+
 var upload = multer({ storage: storage }).single('picture');
 
 var app = express();
@@ -60,12 +72,14 @@ app.get('/api/pictures', function (req, res, next) {
   }, 2000)
 });
 
-app.post('/api/pictures', function (req, res) {
-  upload(req, res, function (err) {
-    if (err) {
-      return res.send(500, "Error uploading file");
+app.post('/api/pictures', function(req, res){
+  upload(req, res, function(err){
+    if(err) {
+      console.log(err);
+      return res.status(500).send("Error uploading file");
+    }else{
+      res.status(200).send('File uploaded');
     }
-    res.send('File uploaded');
   })
 })
 
